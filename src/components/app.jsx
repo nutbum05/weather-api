@@ -8,7 +8,6 @@ const App = props => (
     city={props.location.city}
     country={props.location.country}
   />
-  <ForecastSummary />
 );
 App.propTypes = {
   location: PropTypes.shape({

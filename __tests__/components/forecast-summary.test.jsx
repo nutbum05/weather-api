@@ -1,34 +1,59 @@
 import React from 'react';
-import Enzyme from 'enzyme';
+import { shallow } from 'enzyme';
 import ForecastSummary from '../../src/components/forecast-summary';
+import Moment from 'moment';
+import WeatherIcon from 'react-weathericons';
 
-describe('<ForecastSummary />', () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = Enzyme.shallow((
-      <ForecastSummary
-        date={1525046400000}
-        temperature="mockTemperature"
-        description="mockDescription"
-        icon={800}
-      />
-    ));
-  });
 
-  it('renders the date in correct format', () => {
-    const text = wrapper.find('.date').text();
-    expect(text).toEqual('Mon 30th Apr');
-  });
-  it('renders the temperature', () => {
-    const text = wrapper.find('.temperature').text();
-    expect(text).toEqual('mockTemperature');
-  });
-  it('renders the description', () => {
-    const text = wrapper.find('.description').text();
-    expect(text).toEqual('mockDescription');
-  });
-  it('renders the icon', () => {
-    const img = wrapper.find('.icon').text();
-    expect(img).toEqual('<WeatherIcons />');
-  });
+it('renders the date', () => {
+  const date= new Date()
+    const wrapper = shallow((
+    <ForecastSummary
+      date={date}
+      temperature="mockTemperature"
+      description="mockDescription"
+      icon="mockIcon"
+    />
+  ));
+
+  expect(wrapper.find('.forecast-summary__date').text()).toEqual(Moment(date).format('ddd Do MMM'));
+});
+
+it('renders the temperature', () => {
+  const wrapper = shallow((
+    <ForecastSummary
+      date="mockDate"
+      temperature="mockTemperature"
+      description="mockDescription"
+      icon="mockIcon"
+    />
+  ));
+
+  expect(wrapper.find('.forecast-summary__temperature').text()).toEqual('mockTemperature');
+});
+
+it('renders the description', () => {
+  const wrapper = shallow((
+    <ForecastSummary
+      date="mockDate"
+      temperature="mockTemperature"
+      description="mockDescription"
+      icon="mockIcon"
+    />
+  ));
+
+  expect(wrapper.find('.forecast-summary__description').text()).toEqual('mockDescription');
+});
+
+it('renders the icon', () => {
+  const wrapper = shallow((
+    <ForecastSummary
+      date="mockDate"
+      temperature="mockTemperature"
+      description="mockDescription"
+      icon="mockIcon"
+    />
+  ));
+
+  expect(wrapper.find(WeatherIcon).length).toEqual(1);
 });

@@ -7,10 +7,10 @@ import Moment from 'moment';
 
 const ForecastSummary = props => (
   <div>
-    <span className="date">{Moment(props.date).format('ddd Do MMM')}</span>
-    <span className="temperature">{props.temperature}</span>
-    <span className="description">{props.description}</span>
-    <span className="icon">
+    <span className="forecast-summary__date">{Moment(props.date).format('ddd Do MMM')}</span>
+    <span className="forecast-summary__temperature">{props.temperature}</span>
+    <span className="forecast-summary__description">{props.description}</span>
+    <span className="forecast-summary__icon">
       <WeatherIcon name="owm" iconId={props.icon} />
     </span>
     <button onClick={() => props.onSelect(props.date)}>More details</button>
