@@ -2,12 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ForecastSummary from '../../src/components/forecast-summary';
 import Moment from 'moment';
-import WeatherIcon from 'react-weathericons';
-
+import WeatherIcon from 'react-icons-weather';
 
 it('renders the date', () => {
-  const date= new Date()
-    const wrapper = shallow((
+  const date = new Date();
+  const wrapper = shallow((
     <ForecastSummary
       date={date}
       temperature="mockTemperature"
